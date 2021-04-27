@@ -16,7 +16,6 @@ SAMPLES : ['SLX-19014.ATACAd001.HYTFKDRXX.s_1',
 'SLX-19014.ATACAd009.HYTFKDRXX.s_2',
 ]
 
-group: 'S1'
-chr : 'chrM'
+CHR : 'chrM'
 GENOME: "/rds/project/yhbl2/rds-yhbl2-genehunter/SM/annotations/gatkresources/Homo_sapiens_assembly38.fasta"
 INDEX: "/rds/project/yhbl2/rds-yhbl2-genehunter/SM/annotations/gatkresources/Homo_sapiens_assembly38"

@@ -2,7 +2,7 @@ configfile: "config.yaml"
 
 rule all: 
     input:
-        "{sample}.narrowPeak"
+        expand("{sample}.narrowPeak", sample=config['SAMPLES'])
  
 rule trim: 
     input: 
@@ -46,12 +46,12 @@ rule sort:
 
 rule peak_call: 
     input:
-       "{sample}.sorted.bam", 
-       "{chr}", chr= config['CHR'] 
+       "{sample}.sorted.bam" 
     params: 
       "{sample}.log",
       "{sample}.err",
+      expand("{chr}", chr=config['CHR'])
     output: 
        "{sample}.narrowPeak"
     shell: 
-        "Genrich -t {input[0]} -o {output}  -r -j -v -e {input[1]} > {params[0]} 2> {params[1]}"  
+        "Genrich -t {input} -o {output}  -r -j -v -e {params[2]} > {params[0]} 2> {params[1]}"  
