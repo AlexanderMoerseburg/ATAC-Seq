@@ -16,5 +16,5 @@ and for a dry run use:
 
 and to print the commands in a dry run use:
 
-   snakemake -j1 -n -p 
+    snakemake -j1 -n -p 
 
