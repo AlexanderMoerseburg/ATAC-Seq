@@ -1,13 +1,6 @@
-SAMPLES : ['SLX-19014.ATACAd001.HYTFKDRXX',
-'SLX-19014.ATACAd003.HYTFKDRXX',
-'SLX-19014.ATACAd004.HYTFKDRXX',
-'SLX-19014.ATACAd005.HYTFKDRXX',
-'SLX-19014.ATACAd006.HYTFKDRXX',
-'SLX-19014.ATACAd007.HYTFKDRXX',
-'SLX-19014.ATACAd008.HYTFKDRXX',
-'SLX-19014.ATACAd009.HYTFKDRXX',
-]
-
+REPLICATE: ['SLX-19014.ATACAd001.HYTFKDRXX','SLX-19014.ATACAd002.HYTFKDRXX','SLX-19014.ATACAd003.HYTFKDRXX','SLX-19014.ATACAd004.HYTFKDRXX']
+REPLICATE_NAME: 'replicate1' 
+WORKDIR: '/rds/project/yhbl2/rds-yhbl2-genehunter/SM/BIC053/test'
 CHR : 'chrM'
-GENOME: "/rds/project/yhbl2/rds-yhbl2-genehunter/SM/annotations/gatkresources/Homo_sapiens_assembly38.fasta"
-INDEX: "/rds/project/yhbl2/rds-yhbl2-genehunter/SM/annotations/gatkresources/Homo_sapiens_assembly38"
+GENOME: "/rds/project/yhbl2/rds-yhbl2-genehunter/SM/annotations/Mus_musculus/Ensembl/GRCm38/Sequence/Bowtie2Index/genome"
+INDEX: "/rds/project/yhbl2/rds-yhbl2-genehunter/SM/annotations/Mus_musculus/Ensembl/GRCm38/Sequence/Bowtie2Index/genome"
