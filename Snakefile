@@ -1,9 +1,9 @@
 configfile: "config.yaml"
 workdir: config['WORKDIR']
 
+
 rule all: 
-     input:
-        expand("galore/{sample}.r_1_val_1.fq.gz", sample = config['REPLICATE']), 
+    input:
         expand("{sample}.sam", sample = config['REPLICATE']), 
         expand("{sample}.bam", sample = config['REPLICATE']), 
         expand("{sample}.sorted.bam", sample = config['REPLICATE']),    
@@ -17,7 +17,9 @@ rule trim:
       val1 = "galore/{sample}.r_1_val_1.fq.gz",
       val2 = "galore/{sample}.r_2_val_2.fq.gz"
     shell: 
-         "trim_galore --gzip --retain_unpaired --trim1 --fastqc --fastqc_args "--outdir fastqc" -o galore --paired {input.r1} {input.r2}" 
+         """
+         trim_galore --gzip --retain_unpaired --trim1 --fastqc --fastqc_args "--outdir fastqc" -o galore --paired {input.r1} {input.r2}
+         """ 
 
 rule tosam:
     input:
@@ -48,7 +50,9 @@ rule sort:
     shell: 
        "samtools sort -T {params} -n -o {output} {input}"
 
-rule peak_call: 
+rule peak_call:
+    input: 
+        expand("{sample}.sorted.bam", sample = config['REPLICATE']) 
     params:
        lambda w: ",".join(expand("{sample}.sorted.bam", sample = config['REPLICATE'])), 
        expand("{replicate}.log", replicate = config['REPLICATE_NAME']),
