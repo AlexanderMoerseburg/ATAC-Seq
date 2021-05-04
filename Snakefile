@@ -2,13 +2,13 @@ configfile: "config.yaml"
 workdir: config['WORKDIR']
 
 rule all: 
-     input: 
+     input:
+        expand("galore/{sample}.r_1_val_1.fq.gz", sample = config['REPLICATE']), 
         expand("{sample}.sam", sample = config['REPLICATE']), 
         expand("{sample}.bam", sample = config['REPLICATE']), 
         expand("{sample}.sorted.bam", sample = config['REPLICATE']),    
         expand("{replicate}.narrowPeak", replicate = config['REPLICATE_NAME']) 
-"""
-#expand("galore/{sample}.r_1_val_1.fq.gz", sample = config['REPLICATE']),
+
 rule trim: 
     input: 
        r1 = "{sample}.r_1.fq.gz",
@@ -17,8 +17,7 @@ rule trim:
       val1 = "galore/{sample}.r_1_val_1.fq.gz",
       val2 = "galore/{sample}.r_2_val_2.fq.gz"
     shell: 
-         trim_galore --gzip --retain_unpaired --trim1 --fastqc --fastqc_args "--outdir fastqc" -o galore --paired {input.r1} {input.r2}
-""" 
+         "trim_galore --gzip --retain_unpaired --trim1 --fastqc --fastqc_args "--outdir fastqc" -o galore --paired {input.r1} {input.r2}" 
 
 rule tosam:
     input:
